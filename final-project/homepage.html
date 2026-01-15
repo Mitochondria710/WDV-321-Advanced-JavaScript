@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Log</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <!--USE BOOTSTRAP
+    accordion
+    
+    two default recipes-->
+</head>
+<body>
+    <h1>Recipe Log</h1>
+    
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Vanilla Pudding Chocolate Chip Cookies
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Ingredients:</strong> 
+        <br>
+        <ul>
+        <li>0.5 Cup Butter</li>
+        <li>0.5 Cup Shortening </li>
+        <li>0.25 Cup Sugar </li>
+        <li>0.75 Cup Brown Sugar </li>
+        <li>1 tsp Vanilla Extract </li>
+        <li>0.5 tsp Burnt Sugar Flavor</li> 
+        <li>1 Box Instant Vanilla Pudding </li>
+        <li>2 Eggs </li>
+        <li>2 1/2 Cups Flour </li>
+        <li>1 tsp Baking Soda </li>
+        <li>0.25 tsp salt  </li>
+        <li>1 Package Chocolate Chips </li>
+        </ul>
+        <strong>Instructions:</strong> <br>
+        <ul>
+        <li>Cream together the butter, shortening, and sugars</li>
+        <li>Add the vanilla extract, burnt sugar flavor, pudding mix, and Eggs</li>
+        <li>Sift together the flour, baking soda and salt, and then add them to the previous mixture.</li>
+        <li>Add the chocolate chips.</li>
+        <li>Scoop into balls and bake on a cookie sheet at 375 degrees, for 10-12 minutes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Almond Bars
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Ingredients</strong> <br>
+        <ul>
+        <li>1 Cup Melted butter</li>
+        <li>2 Cups Sugar</li>
+        <li>4 Eggs</li>
+        <li>0.25 tsp Salt</li>
+        <li>2 Cups Flour</li>
+        <li>2 tsp Almond Extract</li>
+        <li>Almond slices</li>
+        </ul>
+        <strong>Instructions:</strong>
+        <ul>
+          <li>Combine and place in a 9x13 greased pan</li>
+          <li>Sprinkle extra sugar and almond slices on top</li>
+          <li>Bake for 30 minutes at 325 degrees</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Custom Recipe!
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Ingredients:</strong>
+        <ul id="customIngredients">
+
+        </ul>
+        <strong>Instructions:</strong>
+        <ul id="customInstructions">
+
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor ({
+                legs, 
+                eyeColor = "black"
+            }) 
+                {
+                this.legs = legs;
+                this.eyeColor = eyeColor;
+            }
+
+            speak() {
+                console.log("Generic Sound.")
+            }
+
+            whatIsItsEyeColor() {
+                console.log(this.eyeColor)
+            }
+        }
+
+        class Dog extends Animal {
+            speak() {
+                console.log("Bark!")
+            }
+            beg() {
+                console.log("Dog is begging!")
+            }
+        }
+
+    //const animal = new Animal(4)
+
+    //animal.speak()
+    //console.log(animal.legs)
+
+    const dog = new Dog({
+        legs: 3,
+        eyeColor: "blue"
+    });
+    dog.speak()
+    dog.beg()
+    console.log("Legs: " + dog.legs)
+    dog.whatIsItsEyeColor()
+
+    // the extends allows dog to use characteristics of animal!'
+    // the override of speak in dog takes priority when it is calleD!
+
+    </script>
+</body>
+</html>
