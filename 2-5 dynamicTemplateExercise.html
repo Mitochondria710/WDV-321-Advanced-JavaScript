@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Template Exercise</title>
+    <style>
+        #container {
+            width:80%;
+            margin-left:auto;
+            margin-right:auto;
+            background-color: khaki;
+            padding:15px;
+        }
+
+        .studentInputLine {
+            display:flex;
+        }
+
+        .studentInputLine div {
+            margin-right:20px;
+            margin-bottom:10px;
+        }
+
+        footer p {
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addStudentButton = document.querySelector('input[value="Add Another Student"]');
+            const studentInputLineTemplate = document.querySelector('.studentInputLine');
+            const submitButton = document.getElementById('submitButton');
+            const resetButton = document.getElementById('resetButton');
+            let studentCount = 3; // Initial count based on existing input lines
+
+            addStudentButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent form submission
+
+                studentCount++; // Increment student count for unique IDs
+
+                // Clone the template
+                const newStudentInputLine = studentInputLineTemplate.cloneNode(true);
+
+                // Update the IDs and names for the new input fields
+                const studentNameInput = newStudentInputLine.querySelector('input[name^="studentName"]');
+                const studentIDInput = newStudentInputLine.querySelector('input[name^="studentID"]');
+
+                studentNameInput.name = `studentName${studentCount}`;
+                studentNameInput.id = `studentName${studentCount}`;
+                studentNameInput.value = ''; // Clear the value for the new input
+
+                studentIDInput.name = `studentID${studentCount}`;
+                studentIDInput.id = `studentID${studentCount}`;
+                studentIDInput.value = ''; // Clear the value for the new input
+
+                // Append the new input line to the form
+                const formSection = document.querySelector('form fieldset section');
+                formSection.appendChild(newStudentInputLine);
+            });
+
+            submitButton.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
+
+            resetButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                // Reset the form and remove dynamically added input lines
+                const form = document.querySelector('form');
+                form.reset();
+
+                // Remove all student input lines except the initial three
+                const studentInputLines = document.querySelectorAll('.studentInputLine');
+                studentInputLines.forEach((line, index) => {
+                    if (index >= 3) {
+                        line.remove();
+                    }
+                });
+            });
+            
+        });
+        
+    </script>
+</head>
+<body>
+   <div id="container">
+    <header>
+        <h1>WDV321 Advanced JavaScript</h1>
+        <h2>Dynamic Structure - Template Exercise</h2>
+    </header>
+    <main>
+        <h3>Dynamic Form Fields</h3>
+        <form method="post" action="#">
+            <fieldset>
+                <legend>Student Registration Process:</legend>
+                    <section>
+                        <div class="studentInputLine">
+                            <div>
+                                <label for="studentName1">Student Name: </label>
+                                <input type="text" name="studentName1" id="studentName1">                        
+                            </div>
+                            <div>
+                                <label for="studentID1">Student ID: </label>
+                                <input type="text" name="studentID1" id="studentID1">                        
+                            </div>
+                        </div>
+                        <div class="studentInputLine">
+                            <div>
+                                <label for="studentName2">Student Name: </label>
+                                <input type="text" name="studentName2" id="studentName2">                        
+                            </div>
+                            <div>
+                                <label for="studentID2">Student ID: </label>
+                                <input type="text" name="studentID2" id="studentID2">                        
+                            </div>
+                        </div>
+                        <div class="studentInputLine">
+                            <div>
+                                <label for="studentName3">Student Name: </label>
+                                <input type="text" name="studentName3" id="studentName3">                        
+                            </div>
+                            <div>
+                                <label for="studentID3">Student ID: </label>
+                                <input type="text" name="studentID3" id="studentID3">                        
+                            </div>
+                        </div>                        
+                    </section>
+                    <div>
+                        <input type="submit" value="Add Another Student">
+                    </div> 
+                    <p>
+                        <input type="submit" id="submitButton" value="Submit Registrations">
+                        <input type="reset" id="resetButton" value="Clear Form">
+                    </p>               
+            </fieldset>
+        </form>
+        <h4>Instructions:</h4>
+        <ul>
+            <li>Create a template based on the studentInputLine section.</li>
+            <li>When the user clicks on the Add Another Student button call a function that will add another input line to the form.</li>
+            <li>Use the template as the basis for the new line.</li>
+            <li>You will need to update the studentName and studentID id values for each new row. The values of the id elements must be unique.</li>
+            <li>Add the new line to the form.</li>
+            <li>Note: this form will not process the form data.</li>
+        </ul>
+    </main>
+    <footer>
+        <p>WDV321 Advanced JavaScript Copyright:  All rights reserved.</p>
+    </footer>
+   </div> 
+</body>
+</html>

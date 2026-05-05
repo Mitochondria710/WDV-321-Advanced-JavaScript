@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Game Selector</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      margin-bottom: 0.25rem;
+    }
+
+    .instructions {
+      background-color: #f7f7f7;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .instructions h2 {
+      margin-top: 0;
+    }
+
+    .instructions ul,
+    .instructions ol {
+      padding-left: 1.2rem;
+    }
+
+    .activity-box {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+
+    select,
+    input,
+    button {
+      padding: 0.4rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .game-section {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      background-color: #fafafa;
+    }
+  </style>
+
+  <script>
+    /*
+      Write all JavaScript inside this script block.
+
+      Requirements:
+      - Use arrow functions
+      - Use addEventListener()
+      - Use DOMContentLoaded
+    */
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const categories = ['Action', 'RPG', 'Strategy'];
+      const gameSelect = document.getElementById('gameSelect');
+
+      // Add default option
+      const defaultOption = document.createElement('option');
+      defaultOption.value = '';
+      defaultOption.textContent = 'Select a Game Category';
+      gameSelect.appendChild(defaultOption);
+
+      // Populate dropdown with categories
+      categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.toLowerCase();
+        option.textContent = category;
+        gameSelect.appendChild(option);
+      });
+
+      gameSelect.addEventListener('change', () => {
+        const selectedCategory = gameSelect.value;
+        const sections = document.querySelectorAll('.game-section');
+
+        sections.forEach(section => {
+          if (section.id === selectedCategory) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+
+      const newCategoryInput = document.getElementById('newCategory');
+      const addCategoryButton = document.getElementById('btnAddCategory'); 
+      addCategoryButton.addEventListener('click', () => {
+        const newCategory = newCategoryInput.value.trim();
+
+        if (newCategory === '') {
+          alert('Please enter a category name.');
+          return;
+        }
+
+        if (categories.includes(newCategory)) {
+          alert('This category already exists.');
+          return;
+        }
+
+        categories.push(newCategory);
+
+        const option = document.createElement('option');
+        option.value = newCategory.toLowerCase();
+        option.textContent = newCategory;
+        gameSelect.appendChild(option);
+
+        newCategoryInput.value = '';
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <h1>Dynamic Game Selector</h1>
+  <div class="instructions">
+    <h2>Instructions</h2>
+    <ol>
+      <li>Create a JavaScript array of video game categories (at least 3).</li>
+      <li>Populate the dropdown dynamically using the array.</li>
+      <li>Add a default option labeled <strong>Select a Game Category</strong>.</li>
+      <li>When a category is selected:
+        <ul>
+          <li>Show the matching content section.</li>
+          <li>Hide all other content sections.</li>
+          <li><strong>Note:</strong> Newly added categories will appear in the dropdown, but you do not need to create a corresponding content section for them in this assignment.</li>
+        </ul>
+      </li>
+      <li>Add functionality to:
+        <ul>
+          <li>Enter a new category name</li>
+          <li>Dynamically add it to the dropdown when a button is clicked</li>
+          <li>Validate that a category is filled in.</li>
+          <li>Validate that a duplicate category is not being entered</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="activity-box">
+    <label for="gameSelect">Game Categories</label>
+    <select id="gameSelect"></select>
+
+    <label for="newCategory">Add New Category</label>
+    <input type="text" id="newCategory" placeholder="Enter category name">
+
+    <button id="btnAddCategory">Add Category</button>
+
+    <!-- Game Category Content -->
+    <div id="action" class="game-section">
+      <h3>Action Games</h3>
+      <p>Fast-paced games that focus on combat and reflexes.</p>
+    </div>
+
+    <div id="rpg" class="game-section">
+      <h3>Role-Playing Games (RPG)</h3>
+      <p>Games focused on story, character development, and progression.</p>
+    </div>
+
+    <div id="strategy" class="game-section">
+      <h3>Strategy Games</h3>
+      <p>Games that emphasize planning, tactics, and decision-making.</p>
+    </div>
+  </div>
+
+</body>
+</html>
